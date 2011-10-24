@@ -38,6 +38,13 @@ public class FragmentExperimentsActivity extends Activity {
 		setContentView(R.layout.main);
 	}
 
+	/**
+	 * Since we have the detail in the same activity of the list
+	 * if we pressed back we exit from the application instead of
+	 * return to the list of items.
+	 *
+	 *  http://android-developers.blogspot.com/2009/12/back-and-other-hard-keys-three-stories.html
+	 */
 	@Override
 	public void onBackPressed() {
 		ViewSwitcher vs = (ViewSwitcher)findViewById(R.id.switchView);
