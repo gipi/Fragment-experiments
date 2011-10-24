@@ -81,11 +81,12 @@ public class FragmentExperimentsActivity extends Activity {
 
 			setListAdapter(
 				new ArrayAdapter<String>(getActivity(),
-					android.R.layout.simple_list_item_activated_1,
+					R.layout.simple_list_item_checked,
 					itemTitleArray
 				)
 			);
 
+			getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 			if (!mIsThereSwitch) {
 				showDetail(mCurrentCheckedIndex);
 			}
@@ -111,6 +112,7 @@ public class FragmentExperimentsActivity extends Activity {
 				ft.commit();
 			} else {
 			}
+			getListView().setItemChecked(index, true);
 
 			if (mIsThereSwitch) {
 				mViewSwitcher.showNext();

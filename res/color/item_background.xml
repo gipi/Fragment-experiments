@@ -1,0 +1,9 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+	<item
+		android:drawable="@color/list_selected_item"
+		android:state_checked="true"
+	/>
+	<item
+		android:drawable="@color/list_item"
+	/>
+</selector>
