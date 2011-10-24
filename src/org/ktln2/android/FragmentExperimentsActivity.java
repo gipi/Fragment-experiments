@@ -62,7 +62,6 @@ public class FragmentExperimentsActivity extends Activity {
 	 * The aim of this class is to show the items.
 	 */
 	static public class ItemsFragment extends ListFragment {
-		private boolean mIsPaned;
 		private boolean mIsThereSwitch;
 		private ViewSwitcher mViewSwitcher;
 		private int mCurrentCheckedIndex = 0;
@@ -73,10 +72,8 @@ public class FragmentExperimentsActivity extends Activity {
 
 			// use the layout to understand if the
 			// application is multi paned
-			View fragmentContainer = getActivity().findViewById(R.id.fragment_detail_container);
 			mViewSwitcher = (ViewSwitcher)getActivity().findViewById(R.id.switchView);
 
-			mIsPaned = fragmentContainer == null ? false : true;
 			mIsThereSwitch = mViewSwitcher == null ? false : true;
 
 			setListAdapter(
@@ -99,20 +96,19 @@ public class FragmentExperimentsActivity extends Activity {
 
 		private void showDetail(int index) {
 			android.util.Log.i("FRAGMENT", "index: " + index);
-			if (mIsPaned) {
-				// TODO: is the best place for this?
-				mCurrentCheckedIndex = index;
 
-				DetailFragment df = DetailFragment.getNewInstance(index);
-				FragmentTransaction ft = getFragmentManager().beginTransaction();
-				// replaces the fragment
-				// NB: the resource id is the container of fragment one
-				ft.replace(R.id.fragment_detail_container, df);
-				ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-				ft.commit();
-			} else {
-			}
 			getListView().setItemChecked(index, true);
+
+			// TODO: is the best place for this?
+			mCurrentCheckedIndex = index;
+
+			DetailFragment df = DetailFragment.getNewInstance(index);
+			FragmentTransaction ft = getFragmentManager().beginTransaction();
+			// replaces the fragment
+			// NB: the resource id is the container of fragment one
+			ft.replace(R.id.fragment_detail_container, df);
+			ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+			ft.commit();
 
 			if (mIsThereSwitch) {
 				mViewSwitcher.showNext();
