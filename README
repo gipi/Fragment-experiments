@@ -1,1 +1,11 @@
 Fragment are introduced at level API 11.
+
+This application want to explore the possibilities of Fragments in Android
+applications.
+
+Another point is to show how manage a particular type of data visualization:
+imagine to have some data to show in a detail page. The detail page must have
+the possibility to navigate between adjacent items.
+
+Image this data having very high performance cost so that requery each time
+for the detail page is not a possibility.
